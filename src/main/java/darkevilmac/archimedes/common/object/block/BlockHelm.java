@@ -128,4 +128,15 @@ public class BlockHelm extends BlockDirectional implements ITileEntityProvider {
         return new BlockState(this, new IProperty[]{FACING});
     }
 
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
+
+	@Override
+	public boolean isFullCube()
+	{
+		return false;
+	}
 }
