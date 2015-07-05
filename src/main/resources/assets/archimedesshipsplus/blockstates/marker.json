@@ -1,17 +1,8 @@
 {
-  "variants": {
-    "facing=north": {"model": "archimedesshipsplus:helm"},
-    "facing=south": {
-      "model": "archimedesshipsplus:helm",
-      "y": 180
-    },
-    "facing=west": {
-      "model": "archimedesshipsplus:helm",
-      "y": 270
-    },
-    "facing=east": {
-      "model": "archimedesshipsplus:helm",
-      "y": 90
+    "variants": {
+        "facing=north": { "model": "archimedesshipsplus:marker" },
+        "facing=east":  { "model": "archimedesshipsplus:marker", "y": 90 },
+        "facing=south": { "model": "archimedesshipsplus:marker", "y": 180 },
+        "facing=west":  { "model": "archimedesshipsplus:marker", "y": 270 }
     }
-  }
 }
