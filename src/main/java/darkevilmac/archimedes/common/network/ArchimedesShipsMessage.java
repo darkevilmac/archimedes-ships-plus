@@ -15,4 +15,8 @@ public abstract class ArchimedesShipsMessage {
 
     public abstract void handleServerSide(EntityPlayer player);
 
+    public boolean onMainThread() {
+        return false;
+    }
+
 }

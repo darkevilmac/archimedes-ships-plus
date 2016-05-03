@@ -1,9 +1,18 @@
 {
   "variants": {
-    "axis=z": {
+    "axis=z,powered=true": {
       "model": "archimedesshipsplus:crate_wood",
       "y": 90
     },
-    "axis=x": {"model": "archimedesshipsplus:crate_wood"}
+    "axis=x,powered=true": {
+      "model": "archimedesshipsplus:crate_wood"
+    },
+    "axis=z,powered=false": {
+      "model": "archimedesshipsplus:crate_wood",
+      "y": 90
+    },
+    "axis=x,powered=false": {
+      "model": "archimedesshipsplus:crate_wood"
+    }
   }
 }

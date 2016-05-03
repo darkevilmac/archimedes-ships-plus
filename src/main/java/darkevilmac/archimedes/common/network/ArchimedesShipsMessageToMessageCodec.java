@@ -1,5 +1,6 @@
 package darkevilmac.archimedes.common.network;
 
+import darkevilmac.movingworld.MovingWorld;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -22,6 +23,7 @@ public class ArchimedesShipsMessageToMessageCodec extends FMLIndexedMessageToMes
     }
 
     public FMLIndexedMessageToMessageCodec<ArchimedesShipsMessage> addDiscriminator(Class<? extends ArchimedesShipsMessage> type) {
+        MovingWorld.logger.info("Registering discriminator " + index + " " + type.getName());
         FMLIndexedMessageToMessageCodec<ArchimedesShipsMessage> ret = super.addDiscriminator(index, type);
         index++;
         return ret;
