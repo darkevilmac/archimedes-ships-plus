@@ -1,10 +1,9 @@
 package darkevilmac.archimedes.client.gui;
 
-import darkevilmac.archimedes.ArchimedesShipMod;
 import darkevilmac.archimedes.common.entity.EntityShip;
-import darkevilmac.archimedes.common.network.ClientChangeSubmerseMessage;
-import darkevilmac.movingworld.MovingWorld;
-import darkevilmac.movingworld.common.network.MovingWorldClientActionMessage;
+import darkevilmac.archimedes.common.network.ArchimedesShipsNetworking;
+import darkevilmac.movingworld.common.network.MovingWorldClientAction;
+import darkevilmac.movingworld.common.network.MovingWorldNetworking;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
@@ -88,20 +87,29 @@ public class GuiShip extends GuiContainer {
     @Override
     protected void actionPerformed(GuiButton button) {
         if (button == btnDisassemble) {
-            MovingWorldClientActionMessage msg = new MovingWorldClientActionMessage(ship, MovingWorldClientActionMessage.Action.DISASSEMBLE);
-            MovingWorld.instance.network.sendToServer(msg);
+            MovingWorldNetworking.NETWORK.send().packet("MovingWorldClientActionMessage")
+                    .with("dimID", ship.worldObj.provider.getDimensionId())
+                    .with("entityID", ship.getEntityId())
+                    .with("action", MovingWorldClientAction.DISASSEMBLE.toByte())
+                    .toServer();
             mc.displayGuiScreen(null);
         } else if (button == btnAlign) {
-            MovingWorldClientActionMessage msg = new MovingWorldClientActionMessage(ship, MovingWorldClientActionMessage.Action.ALIGN);
-            MovingWorld.instance.network.sendToServer(msg);
+            MovingWorldNetworking.NETWORK.send().packet("MovingWorldClientActionMessage")
+                    .with("dimID", ship.worldObj.provider.getDimensionId())
+                    .with("entityID", ship.getEntityId())
+                    .with("action", MovingWorldClientAction.ALIGN.toByte())
+                    .toServer();
 
             ship.alignToGrid();
         } else if (button == btnSubmersible && ((GuiButtonSubmersible) btnSubmersible).canDo) {
             GuiButtonSubmersible subButton = (GuiButtonSubmersible) button;
-            ClientChangeSubmerseMessage msg = new ClientChangeSubmerseMessage(ship, !subButton.submerse);
+
+            ArchimedesShipsNetworking.NETWORK.send().packet("ClientRequestSubmerseMessage")
+                    .with("dimID", ship.worldObj.provider.getDimensionId())
+                    .with("entityID", ship.getEntityId())
+                    .with("submerse", !subButton.submerse).toServer();
 
             subButton.submerse = !subButton.submerse;
-            ArchimedesShipMod.instance.network.sendToServer(msg);
         }
     }
 }

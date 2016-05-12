@@ -244,6 +244,8 @@ public class EntityShip extends EntityMovingWorld {
         if (submerge && entity != null && entity instanceof EntityLivingBase && worldObj != null && !worldObj.isRemote) {
             if (!((EntityLivingBase) entity).isPotionActive(Potion.waterBreathing))
                 ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 20, 1));
+            if (!((EntityLivingBase) entity).isPotionActive(Potion.nightVision))
+                ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(Potion.nightVision.id, 20, 1));
         }
     }
 

@@ -13,9 +13,7 @@ import darkevilmac.archimedes.common.entity.EntityParachute;
 import darkevilmac.archimedes.common.entity.EntitySeat;
 import darkevilmac.archimedes.common.entity.EntityShip;
 import darkevilmac.archimedes.common.handler.ConnectionHandler;
-import darkevilmac.archimedes.common.network.ArchimedesShipsMessageToMessageCodec;
-import darkevilmac.archimedes.common.network.ArchimedesShipsPacketHandler;
-import darkevilmac.archimedes.common.network.NetworkUtil;
+import darkevilmac.archimedes.common.network.ArchimedesShipsNetworking;
 import darkevilmac.archimedes.common.object.ArchimedesObjects;
 import net.minecraft.command.CommandBase;
 import net.minecraft.creativetab.CreativeTabs;
@@ -26,7 +24,6 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
@@ -61,12 +58,7 @@ public class ArchimedesShipMod {
     public static ArchimedesObjects objects;
 
     public static Logger modLog;
-    public NetworkUtil network;
     private ArchimedesConfig localConfig;
-
-    public ArchimedesShipMod() {
-        network = new NetworkUtil();
-    }
 
     public ArchimedesConfig getNetworkConfig() {
         if (FMLCommonHandler.instance().getSide().isClient()) {
@@ -98,8 +90,7 @@ public class ArchimedesShipMod {
 
     @Mod.EventHandler
     public void initMod(FMLInitializationEvent event) {
-        network.channels = NetworkRegistry.INSTANCE.newChannel
-                (MOD_ID, new ArchimedesShipsMessageToMessageCodec(), new ArchimedesShipsPacketHandler());
+        ArchimedesShipsNetworking.setupNetwork();
         objects.init(event);
 
         MinecraftForge.EVENT_BUS.register(new ConnectionHandler());

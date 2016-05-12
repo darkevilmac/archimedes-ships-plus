@@ -3,13 +3,15 @@ package darkevilmac.archimedes.common.tileentity;
 import darkevilmac.archimedes.ArchimedesShipMod;
 import darkevilmac.archimedes.common.entity.EntityShip;
 import darkevilmac.archimedes.common.entity.ShipAssemblyInteractor;
-import darkevilmac.archimedes.common.network.AssembleResultMessage;
+import darkevilmac.archimedes.common.network.ArchimedesShipsNetworking;
 import darkevilmac.movingworld.common.chunk.MovingWorldAssemblyInteractor;
 import darkevilmac.movingworld.common.chunk.assembly.AssembleResult;
 import darkevilmac.movingworld.common.chunk.mobilechunk.MobileChunk;
 import darkevilmac.movingworld.common.entity.EntityMovingWorld;
 import darkevilmac.movingworld.common.entity.MovingWorldInfo;
 import darkevilmac.movingworld.common.tile.TileMovingWorldMarkingBlock;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.BlockPos;
@@ -120,8 +122,18 @@ public class TileEntityHelm extends TileMovingWorldMarkingBlock {
             } else {
                 res = getAssembleResult();
             }
-            AssembleResultMessage message = new AssembleResultMessage(res, prev);
-            ArchimedesShipMod.instance.network.sendToDimension(message, player.worldObj.provider.getDimensionId());
+
+            ByteBuf buf = Unpooled.buffer(12);
+
+            buf.writeBoolean(prev);
+            if (res == null) {
+                buf.writeByte(AssembleResult.ResultType.RESULT_NONE.toByte());
+            } else {
+                buf = res.toByteBuf(buf);
+            }
+
+            ArchimedesShipsNetworking.NETWORK.send().packet("AssembleResultMessage")
+                    .with("result", buf.array()).toAllIn(player.worldObj);
         }
     }
 

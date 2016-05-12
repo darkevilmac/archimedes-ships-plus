@@ -3,8 +3,7 @@ package darkevilmac.archimedes.client.handler;
 import darkevilmac.archimedes.ArchimedesShipMod;
 import darkevilmac.archimedes.common.entity.EntityShip;
 import darkevilmac.archimedes.common.handler.CommonHookContainer;
-import darkevilmac.movingworld.MovingWorld;
-import darkevilmac.movingworld.common.network.RequestMovingWorldDataMessage;
+import darkevilmac.movingworld.common.network.MovingWorldNetworking;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.GlStateManager;
@@ -36,8 +35,9 @@ public class ClientHookContainer extends CommonHookContainer {
                 return;
             }
 
-            RequestMovingWorldDataMessage msg = new RequestMovingWorldDataMessage((EntityShip) event.entity);
-            MovingWorld.instance.network.sendToServer(msg);
+            MovingWorldNetworking.NETWORK.send().packet("RequestMovingWorldDataMessage")
+                    .with("dimID", event.world.provider.getDimensionId())
+                    .with("entityID", event.entity.getEntityId()).toServer();
         }
     }
 

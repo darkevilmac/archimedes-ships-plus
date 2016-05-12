@@ -12,18 +12,26 @@ buildscript {
         }
         dependencies {
             classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+			classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
         }
     }
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 version = 'MC1.8.9-INDEV-H'
 group = 'darkevilmac.archimedesshipsplus'
 archivesBaseName = 'archimedesshipsplus'
 
+repositories {
+    maven {
+        url = 'http://unascribed.com/maven/releases'
+    }
+}
+
 minecraft {
-    version = "1.8.9-11.15.0.1695"
+    version = "1.8.9-11.15.1.1902-1.8.9"
     runDir = 'run'
 
     replace '@AS+VER@', project.version
@@ -31,8 +39,26 @@ minecraft {
     mappings = 'snapshot_20160112'
 }
 
+shadowJar {
+    classifier = 'full'
+    relocate 'com.unascribed.lambdanetwork', "darkevilmac.archimedesshipsplus.repackage.com.unascribed.lambdanetwork"
+}
+
+build.dependsOn(shadowJar)
+
+reobf {
+    shadowJar { mappingType = 'NOTCH' }
+}
+
+artifacts {
+    archives shadowJar
+}
+
 dependencies {
     compile project(':MovingWorld')
+	
+	compile 'com.unascribed:lambdanetwork:0.0.6'
+    shadow 'com.unascribed:lambdanetwork:0.0.6'
 }
 
 processResources

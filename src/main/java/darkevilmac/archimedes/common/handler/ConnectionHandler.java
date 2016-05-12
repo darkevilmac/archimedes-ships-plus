@@ -4,13 +4,13 @@ import darkevilmac.archimedes.ArchimedesShipMod;
 import darkevilmac.archimedes.common.entity.EntityParachute;
 import darkevilmac.archimedes.common.entity.EntitySeat;
 import darkevilmac.archimedes.common.entity.EntityShip;
-import darkevilmac.archimedes.common.network.ConfigMessage;
+import darkevilmac.archimedes.common.network.ArchimedesShipsNetworking;
 import darkevilmac.archimedes.common.tileentity.TileEntitySecuredBed;
 import darkevilmac.movingworld.common.util.Vec3Mod;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
@@ -43,13 +43,25 @@ public class ConnectionHandler {
     }
 
     private void handlerConfigSync(PlayerEvent.PlayerLoggedInEvent event) {
-        if (event.player instanceof EntityPlayerMP)
-            ArchimedesShipMod.instance.network.sendTo(new ConfigMessage(ArchimedesShipMod.instance.getNetworkConfig().getShared()), (EntityPlayerMP) event.player);
+        if (FMLCommonHandler.instance().getEffectiveSide().isServer()) {
+            NBTTagCompound tagCompound = ArchimedesShipMod.instance.getNetworkConfig().getShared().serialize();
+            tagCompound.setBoolean("restore", false);
+
+            ArchimedesShipsNetworking.NETWORK.send().packet("ConfigMessage")
+                    .with("data", tagCompound)
+                    .to(event.player);
+        }
     }
 
     private void handleConfigDesync(PlayerEvent.PlayerLoggedOutEvent event) {
-        if (event.player instanceof EntityPlayerMP)
-            ArchimedesShipMod.instance.network.sendTo(new ConfigMessage(), (EntityPlayerMP) event.player);
+        if (FMLCommonHandler.instance().getEffectiveSide().isServer()) {
+            NBTTagCompound tag = new NBTTagCompound();
+            tag.setBoolean("restore", true);
+
+            ArchimedesShipsNetworking.NETWORK.send().packet("ConfigMessage")
+                    .with("data", tag)
+                    .to(event.player);
+        }
     }
 
     private void handleBedLogin(PlayerEvent.PlayerLoggedInEvent event) {

@@ -1,11 +1,10 @@
 package darkevilmac.archimedes.client.control;
 
-import darkevilmac.archimedes.ArchimedesShipMod;
 import darkevilmac.archimedes.common.ArchimedesConfig;
 import darkevilmac.archimedes.common.entity.EntityShip;
-import darkevilmac.archimedes.common.network.ClientOpenGuiMessage;
-import darkevilmac.movingworld.MovingWorld;
-import darkevilmac.movingworld.common.network.MovingWorldClientActionMessage;
+import darkevilmac.archimedes.common.network.ArchimedesShipsNetworking;
+import darkevilmac.movingworld.common.network.MovingWorldClientAction;
+import darkevilmac.movingworld.common.network.MovingWorldNetworking;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -32,14 +31,17 @@ public class ShipKeyHandler {
     public void updateControl(TickEvent.PlayerTickEvent e) {
         if (e.phase == TickEvent.Phase.START && e.side == Side.CLIENT && e.player == FMLClientHandler.instance().getClientPlayerEntity() && e.player.ridingEntity != null && e.player.ridingEntity instanceof EntityShip) {
             if (config.kbShipInv.isKeyDown() && !kbShipGuiPrevState) {
-                ClientOpenGuiMessage msg = new ClientOpenGuiMessage(2);
-                ArchimedesShipMod.instance.network.sendToServer(msg);
+                ArchimedesShipsNetworking.NETWORK.send().packet("ClientOpenGUIMessage")
+                        .with("guiID", 2).toServer();
             }
             kbShipGuiPrevState = config.kbShipInv.isKeyDown();
 
             if (config.kbDisassemble.isKeyDown() && !kbDisassemblePrevState) {
-                MovingWorldClientActionMessage msg = new MovingWorldClientActionMessage((EntityShip) e.player.ridingEntity, MovingWorldClientActionMessage.Action.DISASSEMBLE);
-                MovingWorld.instance.network.sendToServer(msg);
+                MovingWorldNetworking.NETWORK.send().packet("MovingWorldClientActionMessage")
+                        .with("dimID", e.player.worldObj.provider.getDimensionId())
+                        .with("entityID", e.player.ridingEntity.getEntityId())
+                        .with("action", MovingWorldClientAction.DISASSEMBLE.toByte())
+                        .toServer();
             }
             kbDisassemblePrevState = config.kbDisassemble.isKeyDown();
 

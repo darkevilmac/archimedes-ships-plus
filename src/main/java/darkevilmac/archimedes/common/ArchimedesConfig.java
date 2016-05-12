@@ -1,5 +1,6 @@
 package darkevilmac.archimedes.common;
 
+import com.google.gson.Gson;
 import darkevilmac.archimedes.ArchimedesShipMod;
 import darkevilmac.archimedes.common.object.ArchimedesObjects;
 import darkevilmac.movingworld.MovingWorld;
@@ -7,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.init.Blocks;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -187,5 +189,51 @@ public class ArchimedesConfig {
         public Set<String> stickyObjects;
 
         public boolean enableShipDownfall;
+
+        public NBTTagCompound serialize() {
+            NBTTagCompound tag = new NBTTagCompound();
+            tag.setBoolean("enableAirShips", enableAirShips);
+            tag.setBoolean("enableSubmersibles", enableSubmersibles);
+            tag.setInteger("shipEntitySyncRate", shipEntitySyncRate);
+            tag.setInteger("maxShipChunkBlocks", maxShipChunkBlocks);
+            tag.setFloat("flyBalloonRatio", flyBalloonRatio);
+            tag.setFloat("submersibleFillRatio", submersibleFillRatio);
+            tag.setInteger("shipControlType", shipControlType);
+            tag.setFloat("turnSpeed", turnSpeed);
+            tag.setFloat("speedLimit", speedLimit);
+            tag.setFloat("bankingMultiplier", bankingMultiplier);
+            tag.setBoolean("disassembleOnDismount", disassembleOnDismount);
+            tag.setBoolean("enginesMandatory", enginesMandatory);
+            tag.setBoolean("enableShipDownfall", enableShipDownfall);
+
+            tag.setString("balloonAlternatives", new Gson().toJson(balloonAlternatives));
+            tag.setString("seats", new Gson().toJson(seats));
+            tag.setString("stickyObjects", new Gson().toJson(stickyObjects));
+
+            return tag;
+        }
+
+        public SharedConfig deserialize(NBTTagCompound tag) {
+            SharedConfig sharedConfig = new SharedConfig();
+            sharedConfig.enableAirShips = tag.getBoolean("enableAirShips");
+            sharedConfig.enableSubmersibles = tag.getBoolean("enableSubmersibles");
+            sharedConfig.shipEntitySyncRate = tag.getInteger("shipEntitySyncRate");
+            sharedConfig.maxShipChunkBlocks = tag.getInteger("maxShipChunkBlocks");
+            sharedConfig.flyBalloonRatio = tag.getFloat("flyBalloonRatio");
+            sharedConfig.submersibleFillRatio = tag.getFloat("submersibleFillRatio");
+            sharedConfig.shipControlType = tag.getInteger("shipControlType");
+            sharedConfig.turnSpeed = tag.getFloat("turnSpeed");
+            sharedConfig.speedLimit = tag.getFloat("speedLimit");
+            sharedConfig.bankingMultiplier = tag.getFloat("bankingMultiplier");
+            sharedConfig.disassembleOnDismount = tag.getBoolean("disassembleOnDismount");
+            sharedConfig.enginesMandatory = tag.getBoolean("enginesMandatory");
+            sharedConfig.enableShipDownfall = tag.getBoolean("enableShipDownfall");
+
+            sharedConfig.balloonAlternatives = new Gson().fromJson(tag.getString("balloonAlternatives"), balloonAlternatives.getClass());
+            sharedConfig.seats = new Gson().fromJson(tag.getString("seats"), seats.getClass());
+            sharedConfig.stickyObjects = new Gson().fromJson(tag.getString("stickyObjects"), stickyObjects.getClass());
+
+            return sharedConfig;
+        }
     }
 }

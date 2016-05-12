@@ -9,7 +9,7 @@ import darkevilmac.archimedes.common.tileentity.TileEntitySecuredBed;
 import darkevilmac.movingworld.MovingWorld;
 import darkevilmac.movingworld.common.chunk.LocatedBlock;
 import darkevilmac.movingworld.common.chunk.MovingWorldAssemblyInteractor;
-import darkevilmac.movingworld.common.chunk.assembly.AssembleResult;
+import darkevilmac.movingworld.common.chunk.assembly.AssembleResult.ResultType;
 import darkevilmac.movingworld.common.chunk.assembly.CanAssemble;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
@@ -32,7 +32,7 @@ public class ShipAssemblyInteractor extends MovingWorldAssemblyInteractor {
 
     @Override
     public MovingWorldAssemblyInteractor fromByteBuf(byte resultCode, ByteBuf buf) {
-        if (resultCode == AssembleResult.RESULT_NONE) {
+        if (resultCode == ResultType.RESULT_NONE.toByte()) {
             return new ShipAssemblyInteractor();
         }
         int balloons = buf.readInt();

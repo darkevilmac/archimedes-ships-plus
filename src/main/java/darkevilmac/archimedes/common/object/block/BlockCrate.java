@@ -146,6 +146,9 @@ public class BlockCrate extends BlockContainer {
 
         boolean powered = world.isBlockPowered(pos) || world.isBlockPowered(pos.up());
 
+        if (!(world.getBlockState(pos).getBlock() instanceof BlockCrate))
+            return;
+
         if (powered) {
             TileEntity te = world.getTileEntity(pos);
             if (te != null && te instanceof TileEntityCrate) {
