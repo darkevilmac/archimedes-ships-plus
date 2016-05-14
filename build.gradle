@@ -20,7 +20,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'com.github.johnrengelman.shadow'
 
-version = 'MC1.8.9-INDEV-H'
+version = 'MC1.8.9-V1.9'
 group = 'darkevilmac.archimedesshipsplus'
 archivesBaseName = 'archimedesshipsplus'
 
@@ -40,8 +40,10 @@ minecraft {
 }
 
 shadowJar {
-    classifier = 'full'
-    relocate 'com.unascribed.lambdanetwork', "darkevilmac.archimedesshipsplus.repackage.com.unascribed.lambdanetwork"
+	exclude 'dummyThing'
+		
+    relocate 'com.unascribed.lambdanetwork', "darkevilmac.archimedes.repackage.com.unascribed.lambdanetwork"
+	classifier = 'full'
 }
 
 build.dependsOn(shadowJar)
@@ -52,6 +54,10 @@ reobf {
 
 artifacts {
     archives shadowJar
+}
+
+configurations {
+    runtime.exclude group: 'darkevilmac.movingworld'
 }
 
 dependencies {
