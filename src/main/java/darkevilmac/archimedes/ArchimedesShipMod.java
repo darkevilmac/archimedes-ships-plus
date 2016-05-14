@@ -80,7 +80,6 @@ public class ArchimedesShipMod {
         MinecraftForge.EVENT_BUS.register(this);
 
         objects.preInit(event);
-
         localConfig = new ArchimedesConfig(new Configuration(event.getSuggestedConfigurationFile()));
         localConfig.loadAndSave();
 

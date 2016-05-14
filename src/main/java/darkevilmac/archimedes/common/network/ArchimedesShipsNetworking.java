@@ -28,7 +28,9 @@ public class ArchimedesShipsNetworking {
     public static LambdaNetwork NETWORK;
 
     public static void setupNetwork() {
-        NETWORK = registerPackets(LambdaNetwork.builder().channel("ArchimedesShipsPlus")).build();
+        ArchimedesShipMod.modLog.info("Setting up network...");
+        ArchimedesShipsNetworking.NETWORK = registerPackets(LambdaNetwork.builder().channel("ArchimedesShipsPlus")).build();
+        ArchimedesShipMod.modLog.info("Setup network! " + ArchimedesShipsNetworking.NETWORK.toString());
     }
 
     private static LambdaNetworkBuilder registerPackets(LambdaNetworkBuilder builder) {

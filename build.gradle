@@ -12,17 +12,13 @@ buildscript {
         }
         dependencies {
             classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
-			classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
         }
     }
 }
 
-apply plugin: 'net.minecraftforge.gradle.forge'
-apply plugin: 'com.github.johnrengelman.shadow'
-
-version = 'MC1.8.9-V1.9'
-group = 'darkevilmac.archimedesshipsplus'
-archivesBaseName = 'archimedesshipsplus'
+plugins {
+    id 'com.github.johnrengelman.shadow' version '1.2.3'
+}
 
 repositories {
     maven {
@@ -30,41 +26,51 @@ repositories {
     }
 }
 
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+version = 'MC1.8.9-V1.9'
+group = 'darkevilmac.archimedesshipsplus'
+archivesBaseName = 'archimedesshipsplus'
+
 minecraft {
     version = "1.8.9-11.15.1.1902-1.8.9"
     runDir = 'run'
 
-    replace '@AS+VER@', project.version
+	def replacementVersion = 'MOD_VERSION = \"' + project.version + '\"'
+	
+    replace ("MOD_VERSION = \"@AS+VER@\"",
+			 replacementVersion)
 
     mappings = 'snapshot_20160112'
 }
 
-shadowJar {
-	exclude 'dummyThing'
-		
-    relocate 'com.unascribed.lambdanetwork', "darkevilmac.archimedes.repackage.com.unascribed.lambdanetwork"
-	classifier = 'full'
+dependencies {
+    compile project(':MovingWorld')
+
+    compile 'com.unascribed:lambdanetwork:0.0.6'
 }
 
-build.dependsOn(shadowJar)
+shadowJar {
+	exclude 'dummyThing'
+    classifier = 'full'
+
+    relocate 'com.unascribed.lambdanetwork', 'darkevilmac.movingworld.repackage.com.unascribed.lambdanetwork' // Shaded under movingworld because of some references to MovingWorld networking.
+}
 
 reobf {
-    shadowJar { mappingType = 'NOTCH' }
+    shadowJar { mappingType = 'SEARGE' }
 }
 
 artifacts {
     archives shadowJar
 }
 
-configurations {
-    runtime.exclude group: 'darkevilmac.movingworld'
+dependencies {
+    compile 'com.unascribed:lambdanetwork:0.0.6'
 }
 
-dependencies {
-    compile project(':MovingWorld')
-	
-	compile 'com.unascribed:lambdanetwork:0.0.6'
-    shadow 'com.unascribed:lambdanetwork:0.0.6'
+configurations {
+    runtime.exclude group: 'darkevilmac.movingworld'
 }
 
 processResources
