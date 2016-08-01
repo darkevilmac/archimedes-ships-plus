@@ -9,3 +9,5 @@ Portions of the code may be used for educational purposes.
 I TAKE NO RESPONSIBILITY FOR ANY DAMANGE THIS CONTENT MAY CAUSE TO ANY OBJECT OR SOFTWARE IT IS USED WITH.
 
 For more information contact darkevilmac via twitter.
+
+[![forthebadge](http://forthebadge.com/images/badges/made-with-crayons.svg)](http://forthebadge.com)
