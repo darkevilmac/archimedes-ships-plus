@@ -32,7 +32,7 @@ tile.davincis.engine.name=蒸汽引擎
 tile.davincis.crate_wood.name=板条箱
 tile.davincis.anchorPoint.name=锚点
 
-item.davincis.securedBed.name=Secured Bed
+item.davincis.securedBed.name=安全床
 
 key.davincis.up=上升
 key.davincis.down=下降
