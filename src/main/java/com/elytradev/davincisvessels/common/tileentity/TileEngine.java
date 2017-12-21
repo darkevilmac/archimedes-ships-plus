@@ -1,5 +1,6 @@
 package com.elytradev.davincisvessels.common.tileentity;
 
+import com.elytradev.davincisvessels.DavincisVesselsMod;
 import com.elytradev.davincisvessels.common.LanguageEntries;
 import com.elytradev.davincisvessels.common.api.tileentity.ITileEngineModifier;
 import com.elytradev.davincisvessels.common.entity.ShipCapabilities;
@@ -21,7 +22,6 @@ import net.minecraft.util.text.TextComponentString;
 
 public class TileEngine extends TileEntity implements IInventory, ITileEngineModifier {
     public float enginePower;
-    public int engineFuelConsumption;
     ItemStack[] itemStacks;
     private int burnTime;
     private boolean running;
@@ -36,18 +36,16 @@ public class TileEngine extends TileEntity implements IInventory, ITileEngineMod
         running = false;
     }
 
-    public TileEngine(float power, int fuelconsumption) {
+    public TileEngine(float power) {
         this();
 
         enginePower = power;
-        engineFuelConsumption = fuelconsumption;
     }
 
     @Override
     public void readFromNBT(NBTTagCompound tag) {
         super.readFromNBT(tag);
         burnTime = tag.getInteger("burn");
-        engineFuelConsumption = tag.getShort("fuelCons");
         enginePower = tag.getFloat("power");
         NBTTagList list = tag.getTagList("inv", 10);
         for (int i = 0; i < list.tagCount(); i++) {
@@ -61,7 +59,6 @@ public class TileEngine extends TileEntity implements IInventory, ITileEngineMod
     public NBTTagCompound writeToNBT(NBTTagCompound tag) {
         tag = super.writeToNBT(tag);
         tag.setInteger("burn", burnTime);
-        tag.setShort("fuelCons", (short) engineFuelConsumption);
         tag.setFloat("power", enginePower);
         NBTTagList list = new NBTTagList();
         for (int i = 0; i < getSizeInventory(); i++) {
@@ -268,6 +265,6 @@ public class TileEngine extends TileEntity implements IInventory, ITileEngineMod
 
     @Override
     public void tick(MobileChunk mobileChunk) {
-        running = consumeFuel(engineFuelConsumption);
+        running = consumeFuel(DavincisVesselsMod.INSTANCE.getNetworkConfig().getShared().engineBurnSpeed);
     }
 }

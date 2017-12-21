@@ -24,14 +24,12 @@ public class BlockEngine extends BlockContainer {
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public float enginePower;
-    public int engineFuelConsumption;
 
-    public BlockEngine(Material material, float power, int fuelconsumption) {
+    public BlockEngine(Material material, float power) {
         super(material);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.setSoundType(SoundType.METAL);
         enginePower = power;
-        engineFuelConsumption = fuelconsumption;
     }
 
     @Override
@@ -41,7 +39,7 @@ public class BlockEngine extends BlockContainer {
 
     @Override
     public TileEntity createNewTileEntity(World var1, int var2) {
-        return new TileEngine(enginePower, engineFuelConsumption);
+        return new TileEngine(enginePower);
     }
 
     @Override
