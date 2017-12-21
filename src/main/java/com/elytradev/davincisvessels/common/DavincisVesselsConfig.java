@@ -52,7 +52,7 @@ public class DavincisVesselsConfig {
         shared.enableSubmersibles = config.get("settings", "enable_submersibles", true, "Enable or disable the ability to submerse ships.").getBoolean(true);
         shared.bankingMultiplier = (float) config.get("settings", "banking_multiplier", 3d, "A multiplier for how much ships bank while making turns. Set a positive value for passive banking or a negative value for active banking. 0 disables banking.").getDouble(3d);
         shared.enginesMandatory = config.get("settings", "mandatory_engines", false, "Are engines required for a ship to move?").getBoolean();
-        shared.engineBurnSpeed = config.get("settings", "engine_burn_speed", false, "How many fuel units an engine consumes per tick.").getInt();
+        shared.engineBurnSpeed = config.get("settings", "engine_burn_speed", 10, "How many fuel units an engine consumes per tick.").getInt();
         shared.enableShipDownfall = config.get("settings", "ship_fall", true, "Do ships slowly fall?").getBoolean();
         anchorRadius = config.get("settings", "anchor_radius", 12, "The radius around the ship that an anchor can snap to.").getInt();
 
