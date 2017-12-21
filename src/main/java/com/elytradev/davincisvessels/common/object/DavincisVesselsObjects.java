@@ -134,7 +134,7 @@ public class DavincisVesselsObjects {
         blockStickyBuffer = new BlockAS(Material.CLOTH, SoundType.WOOD).setHardness(1F).setResistance(1F).setCreativeTab(DavincisVesselsMod.CREATIVE_TAB);
         registerBlock(registry, "stickyBuffer", blockStickyBuffer);
 
-        blockEngine = new BlockEngine(Material.IRON, 1F, 10).setHardness(2F).setResistance(3F).setCreativeTab(DavincisVesselsMod.CREATIVE_TAB);
+        blockEngine = new BlockEngine(Material.IRON, 1F).setHardness(2F).setResistance(3F).setCreativeTab(DavincisVesselsMod.CREATIVE_TAB);
         registerBlock(registry, "engine", blockEngine);
 
         blockCrateWood = new BlockCrate(Material.WOOD).setHardness(1f).setResistance(1f).setCreativeTab(DavincisVesselsMod.CREATIVE_TAB);
