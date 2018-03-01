@@ -1,66 +1,108 @@
-#Archimedes' Ships language file fr_FR by Linyor
+#Davinci's Vessels language file fr_FR
 
-entity.ArchimedesShips.shipmod.name=Les vaisseaux d'Archimède
+entity.davincisShips.shipmod.name=Les vaisseaux de Léonard de Vinci
 
-tile.archimedes.marker.name=Barre de vaisseau
-tile.archimedes.floater.name=Flotteur
-tile.archimedes.balloon.name=Montgolfière
-tile.archimedes.balloon.black.name=Montgolfière noire
-tile.archimedes.balloon.red.name=Montgolfière rouge
-tile.archimedes.balloon.green.name=Montgolfière verte
-tile.archimedes.balloon.brown.name=Montgolfière marron
-tile.archimedes.balloon.blue.name=Montgolfière bleu
-tile.archimedes.balloon.purple.name=Montgolfière violette
-tile.archimedes.balloon.cyan.name=Montgolfière cyan
-tile.archimedes.balloon.silver.name=Montgolfière argentée
-tile.archimedes.balloon.gray.name=Montgolfière grise
-tile.archimedes.balloon.pink.name=Montgolfière rose
-tile.archimedes.balloon.lime.name=Montgolfière vert clair
-tile.archimedes.balloon.yellow.name=Montgolfière jaune
-tile.archimedes.balloon.lightBlue.name=Montgolfière bleu clair
-tile.archimedes.balloon.magenta.name=Montgolfière magenta
-tile.archimedes.balloon.orange.name=Montgolfière orange
-tile.archimedes.balloon.white.name=Montgolfière blanche
-tile.archimedes.gauge.name=Jauges de mesure
-tile.archimedes.seat.name=Siège de passager
-tile.archimedes.buffer.name=Bord tampon
-tile.archimedes.engine.name=Moteur à vapeur
-tile.archimedes.crate_wood.name=Caisse en bois
+itemGroup.davincisTab=Vaisseaux de Léonard de Vinci
 
-key.archimedes.up=Monter
-key.archimedes.down=Descendre
-key.archimedes.brake=Freiner
-key.archimedes.align=S'aligner
-key.archimedes.decompile=Désassembler
-key.archimedes.shipinv=Inventaire de vaisseau
+tile.davincis.marker.name=Barre de gouvernail
+tile.davincis.floater.name=Flotteur
+tile.davincis.balloon.name=Ballon
+tile.davincis.balloon.black.name=Ballon noir
+tile.davincis.balloon.red.name=Ballon rouge
+tile.davincis.balloon.green.name=Ballon vert
+tile.davincis.balloon.brown.name=Ballon marron
+tile.davincis.balloon.blue.name=Ballon bleu
+tile.davincis.balloon.purple.name=Ballon violet
+tile.davincis.balloon.cyan.name=Ballon cyan
+tile.davincis.balloon.silver.name=Ballon gris clair
+tile.davincis.balloon.gray.name=Ballon gris
+tile.davincis.balloon.pink.name=Ballon rose
+tile.davincis.balloon.lime.name=Ballon vert clair
+tile.davincis.balloon.yellow.name=Ballon jaune
+tile.davincis.balloon.lightBlue.name=Ballon bleu clair
+tile.davincis.balloon.magenta.name=Ballon magenta
+tile.davincis.balloon.orange.name=Ballon orange
+tile.davincis.balloon.white.name=Ballon blanc
+tile.davincis.gauge.name=Deux cadrants
+tile.davincis.gauge_ext.name=Quatre cadrants
+tile.davincis.seat.name=Siège
+tile.davincis.buffer.name=Amortisseur portuaire
+tile.davincis.stickyBuffer.name=Amortisseur de navire
+tile.davincis.engine.name=Moteur à vapeur
+tile.davincis.crate_wood.name=Caisse en bois
+tile.davincis.anchorPoint.name=Point d'ancrage
 
-gui.archimedes.shipstatus.title=Statut du vaisseau
-gui.archimedes.shipstatus.rename=Rebaptiser
-gui.archimedes.shipstatus.done=Rebaptisation terminée
-gui.archimedes.shipstatus.compile=Assemblez le vaisseau
-gui.archimedes.shipstatus.undo=Annuler
-gui.archimedes.shipstatus.mount=Monter sur le vaisseau
-gui.archimedes.shipstatus.name=Nom
-gui.archimedes.shipstatus.shiptype=Type
-gui.archimedes.shipstatus.type.unknown=Type inconnu
-gui.archimedes.shipstatus.type.airship=Ballon dirigeable
-gui.archimedes.shipstatus.type.boat=Navire
-gui.archimedes.shipstatus.compilerresult=Statut
-gui.archimedes.shipstatus.count.block=Blocs
-gui.archimedes.shipstatus.count.balloon=Montgolfière
-gui.archimedes.shipstatus.count.tileentity=Entités de tuile
+item.davincis.securedBed.name=Lit sécurisé
 
-gui.archimedes.shipstatus.result.none=Non assemblé
-gui.archimedes.shipstatus.result.ok=OK
-gui.archimedes.shipstatus.result.okwarn=Changements détectés
-gui.archimedes.shipstatus.result.missingmarker=Barre manquante
-gui.archimedes.shipstatus.result.overflow=Surplus
-gui.archimedes.shipstatus.result.error=Erreur
-gui.archimedes.shipstatus.result.busy=Assemblage en cours...
-gui.archimedes.shipstatus.result.inconsistent=Incompatible
+key.davincis.up=Monter
+key.davincis.down=Descendre
+key.davincis.brake=Ralentir
+key.davincis.align=S'aligner
+key.davincis.decompile=Arrimer
+key.davincis.shipinv=Inventaire du vaisseau
 
-gui.archimedes.shipinv.title=Inventaire de vaisseau
-gui.archimedes.shipinv.decompile=Désassembler
-gui.archimedes.shipinv.align=Aligner
+container.davincis.shipEngine=Moteur
+container.davincis.anchorPoint=Point d'ancrage
 
-gui.archimedes.engine.title=Carburant du moteur à vapeur
+gui.davincis.shipstatus.title=Etat du vaisseau
+gui.davincis.shipstatus.rename=Rebaptiser
+gui.davincis.shipstatus.done=Valider le nom
+gui.davincis.shipstatus.compile=Désarrimer
+gui.davincis.shipstatus.undo=Annuler
+gui.davincis.shipstatus.mount=Embarquer
+gui.davincis.shipstatus.name=Nom
+gui.davincis.shipstatus.shiptype=Type
+gui.davincis.shipstatus.type.unknown=Type inconnu
+gui.davincis.shipstatus.type.airship=Vaisseau aérien
+gui.davincis.shipstatus.type.boat=Navire
+gui.davincis.shipstatus.compilerresult=Etat
+gui.davincis.shipstatus.count.block=Blocs
+gui.davincis.shipstatus.count.balloon=Ballons
+gui.davincis.shipstatus.count.tileentity=Entités
+gui.davincis.shipstatus.mass=Masse
+gui.davincis.shipstatus.massunit=kg
+
+gui.davincis.shipstatus.result.none=Non assemblé
+gui.davincis.shipstatus.result.ok=OK
+gui.davincis.shipstatus.result.okwarn=Changements détectés
+gui.davincis.shipstatus.result.missingmarker=Barre de gouvernail manquante
+gui.davincis.shipstatus.result.overflow=Surcharge
+gui.davincis.shipstatus.result.error=Erreur
+gui.davincis.shipstatus.result.busy=Assemblage...
+gui.davincis.shipstatus.result.inconsistent=Incompatible
+
+gui.davincis.anchor.title=Point d'ancrage
+gui.davincis.anchor.pos=Position : %s
+gui.davincis.anchor.type=Type : %s
+gui.davincis.anchor.id=ID : %s
+gui.davincis.anchor.link=Lier
+gui.davincis.anchor.switch=Type d'ancre
+gui.davincis.anchor.related=Lié à : %s
+gui.davincis.anchor.norelations=Pas de lien
+
+gui.davincis.anchor.mode.world=Borne d'ancrage
+gui.davincis.anchor.mode.ship=Ancre de vaisseau
+
+gui.davincis.shipinv.title=Inventaire
+gui.davincis.shipinv.decompile=Arrimer
+gui.davincis.shipinv.align=Recentrer
+
+gui.davincis.engine.title=Carburant du moteur à vapeur
+
+gui.davincis.item.tooltip.shift=Maintenir MAJ
+
+achievement.davincis.assemble.failure=Oups !
+achievement.davincis.assemble.success=A vos ordres, capitaine !
+achievement.davincis.assemble.mount=Prenez un siège
+achievement.davincis.create.helm=Presque fini...
+achievement.davincis.create.engine=Plus de puissance !
+achievement.davincis.submerse=Dans les profondeurs !
+achievement.davincis.fly=Vers le ciel !
+
+achievement.davincis.assemble.failure.desc=Qu'est-ce qui s'est mal passé...?
+achievement.davincis.assemble.success.desc=Un solide vaisseau.
+achievement.davincis.assemble.mount.desc=Souhaitons-nous un voyage sans soucis !
+achievement.davincis.create.helm.desc=Préparons-nous à de grandes choses...
+achievement.davincis.create.engine.desc=Maintenant c'est du sérieux !
+achievement.davincis.submerse.desc=Je me demande ce qu'il y a là-dessous...
+achievement.davincis.fly.desc=Pas besoin d'hélium là où nous allons.
