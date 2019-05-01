@@ -44,7 +44,7 @@ key.davincis.shipinv=Inventaire du vaisseau
 container.davincis.shipEngine=Moteur
 container.davincis.anchorPoint=Point d'ancrage
 
-gui.davincis.shipstatus.title=Etat du vaisseau
+gui.davincis.shipstatus.title=État du vaisseau
 gui.davincis.shipstatus.rename=Rebaptiser
 gui.davincis.shipstatus.done=Valider le nom
 gui.davincis.shipstatus.compile=Désarrimer
@@ -55,7 +55,7 @@ gui.davincis.shipstatus.shiptype=Type
 gui.davincis.shipstatus.type.unknown=Type inconnu
 gui.davincis.shipstatus.type.airship=Vaisseau aérien
 gui.davincis.shipstatus.type.boat=Navire
-gui.davincis.shipstatus.compilerresult=Etat
+gui.davincis.shipstatus.compilerresult=État
 gui.davincis.shipstatus.count.block=Blocs
 gui.davincis.shipstatus.count.balloon=Ballons
 gui.davincis.shipstatus.count.tileentity=Entités
@@ -92,14 +92,14 @@ gui.davincis.engine.title=Carburant du moteur à vapeur
 gui.davincis.item.tooltip.shift=Maintenir MAJ
 
 achievement.davincis.assemble.failure=Oups !
-achievement.davincis.assemble.success=A vos ordres, capitaine !
+achievement.davincis.assemble.success=À vos ordres, capitaine !
 achievement.davincis.assemble.mount=Prenez un siège
 achievement.davincis.create.helm=Presque fini...
 achievement.davincis.create.engine=Plus de puissance !
 achievement.davincis.submerse=Dans les profondeurs !
 achievement.davincis.fly=Vers le ciel !
 
-achievement.davincis.assemble.failure.desc=Qu'est-ce qui s'est mal passé...?
+achievement.davincis.assemble.failure.desc=Qu'est-ce qui s'est mal passé... ?
 achievement.davincis.assemble.success.desc=Un solide vaisseau.
 achievement.davincis.assemble.mount.desc=Souhaitons-nous un voyage sans soucis !
 achievement.davincis.create.helm.desc=Préparons-nous à de grandes choses...
