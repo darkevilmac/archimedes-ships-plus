@@ -146,7 +146,7 @@ public class BlockAnchorPoint extends BlockContainer {
     }
 
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.SOLID;
     }
 

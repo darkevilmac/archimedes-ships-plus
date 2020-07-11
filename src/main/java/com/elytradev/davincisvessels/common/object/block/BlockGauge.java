@@ -36,7 +36,7 @@ public class BlockGauge extends BlockContainer {
     }
 
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.CUTOUT_MIPPED;
     }
 
@@ -113,7 +113,7 @@ public class BlockGauge extends BlockContainer {
     @Override
     public IBlockState getStateFromMeta(int meta) {
         int facingIndex = meta & 3;
-        EnumFacing facing = EnumFacing.getHorizontal(facingIndex);
+        EnumFacing facing = EnumFacing.byHorizontalIndex(facingIndex);
 
         boolean extended = meta > 3;
 

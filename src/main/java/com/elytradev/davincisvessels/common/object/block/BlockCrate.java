@@ -65,7 +65,7 @@ public class BlockCrate extends BlockContainer {
     }
 
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.SOLID;
     }
 
@@ -101,7 +101,7 @@ public class BlockCrate extends BlockContainer {
     }
 
     @Override
-    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+    public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
         if (world.isRemote || state.getValue(POWERED))
             return;
 

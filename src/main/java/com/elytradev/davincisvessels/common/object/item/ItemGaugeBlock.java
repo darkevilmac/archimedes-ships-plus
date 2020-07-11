@@ -20,8 +20,8 @@ public class ItemGaugeBlock extends ItemBlock {
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack stack) {
-        return super.getUnlocalizedName() + (stack.getMetadata() != 0 ? "_ext" : "");
+    public String getTranslationKey(ItemStack stack) {
+        return super.getTranslationKey() + (stack.getMetadata() != 0 ? "_ext" : "");
     }
 }
 

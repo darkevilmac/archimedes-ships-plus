@@ -1,10 +1,9 @@
 buildscript {
     repositories {
-        mavenCentral()
         jcenter()
         maven {
             name = 'forge'
-            url = 'http://files.minecraftforge.net/maven'
+            url = 'https://files.minecraftforge.net/maven'
         }
         maven {
             name = 'sonatype-snapshots'
@@ -17,20 +16,19 @@ buildscript {
 }
 
 plugins {
-    id 'com.github.johnrengelman.shadow' version '1.2.3'
+    id 'com.github.johnrengelman.shadow' version '4.0.4'
 }
 
 repositories {
-    mavenCentral()
     maven {
-        url 'http://repo.spongepowered.org/maven'
-    }
-    maven {
-        url = 'http://repo.elytradev.com/'
+        name = 'elytra'
+        url = 'https://repo.elytradev.com/'
     }
 }
 
+apply plugin: 'java'
 apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'idea'
 
 def branch
 if (System.env.BRANCH_NAME) {
@@ -64,7 +62,7 @@ minecraft {
 dependencies {
     compileOnly project(':MovingWorld')
 
-    compile 'com.elytradev:concrete:' + project.concreteVersion + ':all'
+    compile 'com.elytradev.concrete:concrete-network:' + project.concreteVersion
 }
 
 shadowJar {
@@ -78,6 +76,8 @@ shadowJar {
 reobf {
     shadowJar { mappingType = 'SEARGE' }
 }
+
+tasks.build.dependsOn reobfShadowJar
 
 artifacts {
     archives shadowJar

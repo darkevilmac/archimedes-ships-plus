@@ -28,7 +28,7 @@ public class TileEntityGaugeRenderer extends TileEntitySpecialRenderer {
 
         Vec3d dVec = new Vec3d(0, 0, 0);
         if (tileEntity.parentShip == null) {
-            dVec.addVector(0.5F, 0, 0.5F);
+            dVec.add(0.5F, 0, 0.5F);
         } else if (tileEntity.parentShip.getControllingPassenger() instanceof EntityPlayerSP) {
             dVec = new Vec3d(tileEntity.parentShip.riderDestination.getX() - tileEntity.getPos().getX(),
                     tileEntity.parentShip.riderDestination.getY() - tileEntity.getPos().getY(),

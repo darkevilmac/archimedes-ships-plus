@@ -45,7 +45,7 @@ public class DavincisVesselsMod {
 
     public static CreativeTabs CREATIVE_TAB = new CreativeTabs("davincisTab") {
         @Override
-        public ItemStack getTabIconItem() {
+        public ItemStack createIcon() {
             return new ItemStack(DavincisVesselsObjects.blockMarkShip);
         }
     };

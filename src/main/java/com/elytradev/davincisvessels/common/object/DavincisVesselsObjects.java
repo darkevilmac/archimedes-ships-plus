@@ -169,7 +169,7 @@ public class DavincisVesselsObjects {
             EnumDyeColor dyeColor = EnumDyeColor.byMetadata(i);
             registerShapelessRecipe(recipeRegister.getRegistry(), new ItemStack(blockBalloon, 1, dyeColor.getMetadata()), new ItemStack(Blocks.WOOL, 1, dyeColor.getMetadata()), "string");
             registerShapelessRecipe(recipeRegister.getRegistry(), new ItemStack(blockBalloon, 1, dyeColor.getMetadata()),
-                    "dye" + dyeColor.getUnlocalizedName().substring(0, 1).toUpperCase() + dyeColor.getUnlocalizedName().substring(1),
+                    "dye" + dyeColor.getTranslationKey().substring(0, 1).toUpperCase() + dyeColor.getTranslationKey().substring(1),
                     blockBalloon);
         }
         DavincisVesselsMod.LOG.info("Registration complete!");
@@ -179,12 +179,12 @@ public class DavincisVesselsObjects {
     }
 
     private void registerShapedRecipe(IForgeRegistry<IRecipe> registry, ItemStack out, Object... input) {
-        ResourceLocation resourceLocation = new ResourceLocation(MOD_ID, out.getUnlocalizedName() + recipeID++);
+        ResourceLocation resourceLocation = new ResourceLocation(MOD_ID, out.getTranslationKey() + recipeID++);
         registry.register(new ShapedOreRecipe(resourceLocation, out, input).setRegistryName(resourceLocation));
     }
 
     private void registerShapelessRecipe(IForgeRegistry<IRecipe> registry, ItemStack out, Object... input) {
-        ResourceLocation resourceLocation = new ResourceLocation(MOD_ID, out.getUnlocalizedName() + recipeID++);
+        ResourceLocation resourceLocation = new ResourceLocation(MOD_ID, out.getTranslationKey() + recipeID++);
         registry.register(new ShapelessOreRecipe(resourceLocation, out, input).setRegistryName(resourceLocation));
     }
 
@@ -193,7 +193,7 @@ public class DavincisVesselsObjects {
     }
 
     private void registerBlock(IForgeRegistry<Block> registry, String id, Block block, boolean withItemBlock) {
-        block.setUnlocalizedName("davincis." + id);
+        block.setTranslationKey("davincis." + id);
         block.setRegistryName(REGISTRY_PREFIX, id);
         registry.register(block);
         if (withItemBlock)
@@ -203,7 +203,7 @@ public class DavincisVesselsObjects {
 
     private void registerBlock(IForgeRegistry<Block> registry, String id, Block block, Class<? extends ItemBlock> itemBlockClass) {
         try {
-            block.setUnlocalizedName("davincis." + id);
+            block.setTranslationKey("davincis." + id);
             block.setRegistryName(REGISTRY_PREFIX, id);
             registry.register(block);
 
@@ -217,7 +217,7 @@ public class DavincisVesselsObjects {
     }
 
     private void registerItem(IForgeRegistry<Item> registry, String id, Item item) {
-        item.setUnlocalizedName("davincis." + id);
+        item.setTranslationKey("davincis." + id);
         item.setRegistryName(REGISTRY_PREFIX, id);
         registry.register(item);
         DavincisVesselsObjects.registeredItems.put(id, item);

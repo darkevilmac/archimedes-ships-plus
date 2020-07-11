@@ -39,7 +39,7 @@ public class ItemSecuredBed extends Item {
             }
 
             int i = MathHelper.floor((double) (playerIn.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-            EnumFacing enumfacing = EnumFacing.getHorizontal(i);
+            EnumFacing enumfacing = EnumFacing.byHorizontalIndex(i);
             BlockPos blockpos = pos.offset(enumfacing);
             ItemStack stack = playerIn.getHeldItem(hand);
 
