@@ -26,7 +26,7 @@ repositories {
         url 'http://repo.spongepowered.org/maven'
     }
     maven {
-        url = 'http://repo.elytradev.com/'
+        url = 'http://repo.tridevmc.com/'
     }
 }
 
@@ -64,7 +64,7 @@ minecraft {
 dependencies {
     compileOnly project(':MovingWorld')
 
-    compile 'com.elytradev:concrete:' + project.concreteVersion + ':all'
+    compile 'com.elytradev.concrete:concrete-all:' + project.concreteVersion
 }
 
 shadowJar {
