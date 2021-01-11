@@ -1,0 +1,108 @@
+#Davinci's Vessels language file ko_KR
+
+entity.davincisShips.shipmod.name=Davinci's Vessels
+
+itemGroup.davincisTab=Davinci's Vessels
+
+tile.davincis.marker.name=타륜
+tile.davincis.floater.name=부유물
+tile.davincis.balloon.name=풍선
+tile.davincis.balloon.black.name=검은색 풍선
+tile.davincis.balloon.red.name=빨간색 풍선
+tile.davincis.balloon.green.name=초록색 풍선
+tile.davincis.balloon.brown.name=갈색 풍선
+tile.davincis.balloon.blue.name=파란색 풍선
+tile.davincis.balloon.purple.name=보라색 풍선
+tile.davincis.balloon.cyan.name=청록색 풍선
+tile.davincis.balloon.silver.name=회백색 풍선
+tile.davincis.balloon.gray.name=회색 풍선
+tile.davincis.balloon.pink.name=분홍색 풍선
+tile.davincis.balloon.lime.name=연두색 풍선
+tile.davincis.balloon.yellow.name=노란색 풍선
+tile.davincis.balloon.lightBlue.name=하늘색 풍선
+tile.davincis.balloon.magenta.name=자홍색 풍선
+tile.davincis.balloon.orange.name=주황색 풍선
+tile.davincis.balloon.white.name=하얀색 풍선
+tile.davincis.gauge.name=계기판
+tile.davincis.gauge_ext.name=심화 계기판
+tile.davincis.seat.name=좌석
+tile.davincis.buffer.name=지상 완충재
+tile.davincis.stickyBuffer.name=선박 완충재
+tile.davincis.engine.name=스팀 엔진
+tile.davincis.crate_wood.name=목재 상자
+tile.davincis.anchorPoint.name=닻
+
+item.davincis.securedBed.name=침상
+
+key.davincis.up=상승
+key.davincis.down=하강
+key.davincis.brake=정지
+key.davincis.align=위치 재정렬
+key.davincis.decompile=해체
+key.davincis.shipinv=선박 인벤토리
+
+container.davincis.shipEngine=엔진
+container.davincis.anchorPoint=닻
+
+gui.davincis.shipstatus.title=선박 상태
+gui.davincis.shipstatus.rename=이름 수정
+gui.davincis.shipstatus.done=수정 완료
+gui.davincis.shipstatus.compile=조립
+gui.davincis.shipstatus.undo=되돌리기
+gui.davincis.shipstatus.mount=선박 탑승
+gui.davincis.shipstatus.name=이름
+gui.davincis.shipstatus.shiptype=타입
+gui.davincis.shipstatus.type.unknown=식별 불가능
+gui.davincis.shipstatus.type.airship=비공정
+gui.davincis.shipstatus.type.boat=선박
+gui.davincis.shipstatus.compilerresult=상태
+gui.davincis.shipstatus.count.block=블록
+gui.davincis.shipstatus.count.balloon=풍선
+gui.davincis.shipstatus.count.tileentity=개체
+gui.davincis.shipstatus.mass=질량
+gui.davincis.shipstatus.massunit=kg
+
+gui.davincis.shipstatus.result.none=조립 안됨
+gui.davincis.shipstatus.result.ok=출항 가능
+gui.davincis.shipstatus.result.okwarn=변경 감지
+gui.davincis.shipstatus.result.missingmarker=타륜 없음
+gui.davincis.shipstatus.result.overflow=블록 제한 초과
+gui.davincis.shipstatus.result.error=오류
+gui.davincis.shipstatus.result.busy=조립중...
+gui.davincis.shipstatus.result.inconsistent=불일치
+
+gui.davincis.anchor.title=닻
+gui.davincis.anchor.pos=좌표: %s
+gui.davincis.anchor.type=타입: %s
+gui.davincis.anchor.id=ID: %s
+gui.davincis.anchor.link=연결
+gui.davincis.anchor.switch=모드 전환
+gui.davincis.anchor.related=연결됨: %s
+gui.davincis.anchor.norelations=연결 없음
+
+gui.davincis.anchor.mode.world=지상 닻
+gui.davincis.anchor.mode.ship=선박 닻
+
+gui.davincis.shipinv.title=선박 인벤토리
+gui.davincis.shipinv.decompile=해체
+gui.davincis.shipinv.align=위치 재정렬
+
+gui.davincis.engine.title=엔진 연료
+
+gui.davincis.item.tooltip.shift=Shift를 누르세요
+
+achievement.davincis.assemble.failure=이런!
+achievement.davincis.assemble.success=승선을 준비하라!
+achievement.davincis.assemble.mount=착석해주십시오
+achievement.davincis.create.helm=고지가 머지 않았다...
+achievement.davincis.create.engine=연료 채워!
+achievement.davincis.submerse=심해
+achievement.davincis.fly=위로!
+
+achievement.davincis.assemble.failure.desc=뭐가 잘못된거지...?
+achievement.davincis.assemble.success.desc=이놈은 바다를 누빌거야...
+achievement.davincis.assemble.mount.desc=편안한 여행 되시길!
+achievement.davincis.create.helm.desc=충격에 대비하라
+achievement.davincis.create.engine.desc=이제야 좀 말이 통하네!
+achievement.davincis.submerse.desc=이 아래엔 뭐가 있을까?
+achievement.davincis.fly.desc=하늘을 나는데 헬륨따윈 필요없지
